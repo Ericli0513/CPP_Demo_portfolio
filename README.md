@@ -1,165 +1,100 @@
-# C Demo portfolio
+# C++ Demo portfolio
 
-1.driver_test
-2.System Driver Test
+1.cpp-pipeline-demo project    
+2.driver_test_project    
+3.module_integration_project1
+4.module_integration_project2
+5.sys_monitor_project
+6.tv_integration_project
 
------------------------------------------------------------------------------------------------------
-1.
-# 簡易 Driver 測試工具 (C 語言)
-  Driver Test (C)
-  
-## 🎯專案目標|Project Overview
-此專案展示我能用 C 語言撰寫 Linux 下的系統程式，模擬「驅動測試工具」的概念：初始化、執行測試、輸出 log。
-專案結構簡單，容易在短時間完成。
+--------------------------------------------------------------------------------------------------------
+1. cpp-pipeline-demo project
 
-This project demonstrates my ability to write Linux system programs in C, 
-simulating the concept of a “driver test tool” with initialization, test execution, 
-and log output. 
-The project structure is simple and can be completed within a short timeframe.
+[![C++ CI](https://github.com/Ericli0513/cpp-demo/cpp-pipeline-demo/actions/workflows/ci.yml/badge.svg)]
+(https://github.com/Ericli0513/cpp-demo/cpp-pipeline-demo/actions)
 
-## ✨ 專案特色 | Key Features
-此專案使用 C 語言撰寫，展示 Linux 下的系統呼叫與 log 管理。
-同時也能以 C++ 撰寫模組化版本，展現 C / C++ 的雙語言能力。
+## 📌 專案介紹
+這是一個簡單的 C++ 專案範例，展示如何同時支援：
+- **Linux CLI 編譯**（Makefile）
+- **VS Code 開發**（tasks.json + launch.json）
+- **Shell Script 一鍵操作**（編譯、執行、清理、測試）
+- **GitHub Actions CI/CD**（自動化編譯與測試）
 
-This project is implemented in C, demonstrating system calls and log management under Linux. 
-It can also be written in C++ as a modular version, showcasing dual-language capability 
-in C and C++.
+此專案結構清晰，適合展示工程師的完整開發流程。
 
------------------------------------------------------------------------------------------------------
-2.
-# 系統驅動測試工具 (C) 
-  System Driver Test (C)
-  
-## 🎯專案目標|Project Overview
-此專案展示我在 **C 語言**下的系統程式設計能力，包含多進程、IPC、執行緒、訊號處理、設備檢查與回退機制。  
-專案模擬「驅動測試工具」的場景，確保在不同 Linux 環境下能正確執行並產生 log。
+## 📂 專案結構
+cpp-pipeline-demo/ 
+├── src/ # 主程式碼 
+├── tests/ # 單元測試 
+├── Makefile # 編譯規則 
+├── run.sh # 一鍵編譯/執行/清理/測試
+├── .vscode/
+│   ├── tasks.json
+│   └── launch.json 
+└── .github/
+    └── workflows/
+        └── ci.yml   ← CI/CD 設定檔 (含 artifact 上傳)
 
-This project demonstrates my **system-level C programming skills** in a Linux environment, 
-including multi-process, IPC, threading, signal handling, device checking, and fallback mechanisms. 
+## 開發環境
+Ubuntu (WSL2 / Linux)
+GCC / G++ 編譯器
+Make / Shell Script
+VS Code + Remote WSL 插件
 
----
+## 🎯 專案定位
+這個專案展示了完整的工程師流程：
+本地開發：CLI +VS Code 提升開發效率
+命令列編譯：Makefile + Shell Script 展現嵌入式/Linux 工程師風格，自動化腳本。
+          一鍵自動化，支援「編譯、執行、清理、測試」。
+自動化測試：單元測試確保程式正確性
+CI/CD + Artifact：雲端自動編譯與測試，成果可下載驗證，符合工業級 DevOps 要求。
 
-## ✨ 專案特色 | Key Features
-- **多進程與 IPC** | **Multi-process & IPC**  
-  使用 `fork` 與 `pipe` 建立父子行程並交換指令。  
-  Uses `fork` and `pipe` to create child processes and exchange commands.  
+## 📈 未來擴充
+增加更多單元測試
+整合 cmake 支援跨平台編譯
+加入 Dockerfile，提供容器化環境
 
-- **外部指令執行** | **External Command Execution**  
-  子行程透過 `execlp` 執行系統指令 (如 `uname -a`)。（可替換為需要的工具），捕捉成功/失敗。
-  Child process executes system commands (e.g., `uname -a`) via `execlp`.  
+## ☁️ 下載 CI/CD Artifact
+每次 push 或 PR 到 main 分支，GitHub Actions 會自動：
+編譯專案並執行測試
+產生 binary (demo)
+上傳到 Artifacts 區域
 
-- **執行緒與同步** | **Multi-threading & Synchronization**  
-  背景 logger 執行緒定期記錄心跳訊息。  
-  Background logger thread records heartbeat messages.  
+下載方式
+前往 GitHub 專案頁面 → Actions → 點選最新的 workflow run
+在頁面底部找到 Artifacts 區塊
+下載 demo-binary.zip
+解壓縮後即可執行： ./demo
 
-- **訊號處理** | **Signal Handling**  
-  支援 `SIGINT` / `SIGTERM`，安全關閉並清理資源。  
-  Supports `SIGINT` / `SIGTERM` for safe shutdown and resource cleanup.  
+--------------------------------------------------------------------------------------------------------
+2.driver_test_project
 
-- **設備節點檢查** | **Device Node Checking**  
-  檢查 `/dev/i2c-1` 等設備路徑，若不存在則重試並回退。  
-  Validates device paths (e.g., `/dev/i2c-1`); retries if unavailable, then fallback.  
+「開發 Driver 測試工具 (C++/Linux)，使用裝置檔案存取與自動化測試案例，驗證 Driver 初始化、效能與穩定性。」
+「我設計了 Driver 測試工具，並用 Shell Script 包裝成自動化流程，只要一個指令就能完成編譯、執行、清理，
+方便團隊快速驗證 Driver。」
 
-- **錯誤處理與回退機制** | **Error Handling & Fallback** 
-  使用 open/write/close 進行低階 I/O，嚴格檢查 errno。 
-  失敗時記錄 WARN/ERROR，並自動切換到模擬模式。  
-  Perform low-level I/O using open/write/close, with strict checking of errno.
-  Logs WARN/ERROR and switches to simulation mode when device is missing.  
-  
----
+--------------------------------------------------------------------------------------------------------
+3.module_integration_project1
+「設計 Linux 模組整合與自動化載入工具 (C++/Shell)，支援模組載入、測試與卸載流程，並產生 log，提升系統整合效率。」
+「我在 Demo 裡用 /dev/null 或系統工具模擬，但設計時已考慮真實 Driver 測試流程 (insmod/rmmod + log 收集)。」
 
-## 📂 專案結構 | Project Structure
-sys_driver_test/ 
-├── Makefile 
-├── main.c 
-├── sys_test.c 
-├── sys_test.h 
-└── logs.txt (執行後產生 | generated after execution)
+--------------------------------------------------------------------------------------------------------
+4.module_integration_project2
+「設計 Linux 模組整合工具 (C++/Shell)，結合物件導向模組管理與自動化載入/卸載流程，並產生 log，提升系統整合效率。」
+這樣的「結合版」程式：
+OOP 結構：用 Module 類別管理模組狀態。
+Linux 整合：在 load/unload 裡呼叫 system()，模擬 insmod/rmmod，並寫 log。
+Shell Script：一鍵完成編譯、執行、清理。
 
----
+--------------------------------------------------------------------------------------------------------
+5.sys_monitor_project
+「開發系統效能監控工具 (C++/Linux)，讀取 /proc 系統檔案監控 CPU 與記憶體使用率，並透過 Shell Script 
+自動化流程產生 log。」
 
-## ⚙️ 編譯與執行 | Build & Run
-```
-make
-./sys_driver_test
-cat logs.txt
-```
----
-
-📝 範例輸出 | Example Output
-
-終端機 | Terminal:
-=== System Driver Test (C) ===
-Driver initialized.
-Driver test executed.
-Driver closed.
-
-logs.txt:
-[2025-11-28 23:36:47] [INFO] Device node found, proceeding with real test
-[2025-11-28 23:36:47] [INFO] system init complete
-[2025-11-28 23:36:47] [HEARTBEAT] logger alive
-Linux DESKTOP-N3SJV8D 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
-[2025-11-28 23:36:47] [INFO] parent waiting for child
-[2025-11-28 23:36:48] [INFO] child exec success
-[2025-11-28 23:36:48] [INFO] system shutdown
-[2025-11-28 23:36:48] [INFO] logger exiting
-
----
-
-🔹 流程解釋 | Process Explanation
-
-- **Device 檢查**：程式在初始化時先檢查 device node，確認存在後進入「真實測試模式」。  
-- **System Init**：完成 signal handler、log 檔案、logger thread 的初始化。  
-- **Heartbeat**：logger thread 開始定期輸出心跳訊息，顯示系統持續運作。  
-- **Fork/Exec 測試**：parent 透過 pipe 傳遞指令，child 成功執行 `uname -a` 並輸出系統資訊。  
-- **Shutdown 流程**：parent 等待 child 完成後，觸發 shutdown，logger thread 在結束前輸出最後訊息。  
-
-👉 此 log 展示了完整的系統流程，順序設計確保 **可讀性** 與 **完整性**，同時強調這是一個 
-**user-space 系統程式專案**，而非韌體或 kernel driver。
-
-Device Check: During initialization, the program first checks the device node. If it exists, 
-the program enters “real test mode.”
-System Init: Completes initialization of the signal handler, log file, and logger thread.
-Heartbeat: The logger thread begins outputting heartbeat messages periodically, indicating 
-that the system is running continuously.
-Fork/Exec Test: The parent process sends a command through a pipe, and the child successfully 
-executes uname -a to output system information.
-Shutdown Process: The parent waits for the child to finish, then triggers shutdown. 
-The logger thread outputs its final message before exiting.
-
-👉 This log demonstrates the complete system workflow. 
-The sequence is designed to ensure readability and integrity, while emphasizing that 
-this is a user-space system programming project, not firmware or a kernel driver.
-
----
-
-## 💡技能強調 | Skills Highlighted
-C 語言 | C Programming：Linux 系統呼叫、IPC、執行緒、訊號處理、設備檢查
-系統整合能力 | System Integration：真實設備與模擬模式切換，確保穩定性
-工業環境思維 | Industrial Mindset：錯誤處理、回退機制、結構化 log
-
-C Programming: Linux system calls, IPC, multithreading, signal handling, device checking
-System Integration: Switching between real device and simulation mode to ensure stability
-Industrial Mindset: Error handling, fallback mechanisms, structured logging
-
-🔧 延伸應用 | Extensions
-替換外部指令 (如 i2cdetect, lsusb) | Replace external command (i2cdetect, lsusb)
-修改設備路徑 (如 /dev/i2c-1) | Modify device path (/dev/i2c-1)
-擴充 log 系統，整合至 CIM/MES | Extend logging system for CIM/MES integration
-
----
-
-## 📌 對應的工程師類型|Relevant Engineer Profiles
-嵌入式 / 驅動工程師：熟悉 Linux 下的設備節點、驅動測試、系統呼叫。
-系統軟體工程師：能處理 IPC、多進程、多執行緒，並設計 log 與錯誤處理。
-工控 / CIM/MES 系統整合工程師：需要在工業環境下確保程式穩定性，能處理「設備不存在 → 回退模擬模式」這種情境。
-
-Embedded / Driver Engineer: Familiar with Linux device nodes, driver testing, and system calls.
-System Software Engineer: Experienced in IPC, multi‑process, multithreading, and designing 
-logs with error handling.
-Industrial Control / CIM/MES Integration Engineer: Ensures program stability in industrial 
-environments, capable of handling scenarios such as “device not available → fallback to 
-simulation mode”.
+--------------------------------------------------------------------------------------------------------
+6.tv_integration_project
+「開發 TV 系統整合測試工具 (C++/Linux)，結合 Shell Script 自動化流程，透過 cec-client、amixer、ping 
+驗證 HDMI/CEC、音訊切換與網路連線，並產生測試 log。」
 
 ---
 ## 🧪 License | 授權條款
@@ -175,11 +110,6 @@ Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
 ❌ 不得轉載整段程式碼進行授課或出版  
 ❌ 不得修改為二創內容再發佈  
 ❌ 不得用於商業或競賽活動
-
-
-
-
-
 
 
 
