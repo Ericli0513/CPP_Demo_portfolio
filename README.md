@@ -29,7 +29,8 @@ in C and C++.
 2.
 # 系統驅動測試工具 (C) 
   System Driver Test (C)
-
+  
+## 🎯專案目標|Project Overview
 此專案展示我在 **C 語言**下的系統程式設計能力，包含多進程、IPC、執行緒、訊號處理、設備檢查與回退機制。  
 專案模擬「驅動測試工具」的場景，確保在不同 Linux 環境下能正確執行並產生 log。
 
@@ -132,7 +133,7 @@ this is a user-space system programming project, not firmware or a kernel driver
 
 ---
 
-💡 技能強調 | Skills Highlighted
+## 💡技能強調 | Skills Highlighted
 C 語言 | C Programming：Linux 系統呼叫、IPC、執行緒、訊號處理、設備檢查
 系統整合能力 | System Integration：真實設備與模擬模式切換，確保穩定性
 工業環境思維 | Industrial Mindset：錯誤處理、回退機制、結構化 log
@@ -148,7 +149,7 @@ Industrial Mindset: Error handling, fallback mechanisms, structured logging
 
 ---
 
-##📌 對應的工程師類型|Relevant Engineer Profiles
+## 📌 對應的工程師類型|Relevant Engineer Profiles
 嵌入式 / 驅動工程師：熟悉 Linux 下的設備節點、驅動測試、系統呼叫。
 系統軟體工程師：能處理 IPC、多進程、多執行緒，並設計 log 與錯誤處理。
 工控 / CIM/MES 系統整合工程師：需要在工業環境下確保程式穩定性，能處理「設備不存在 → 回退模擬模式」這種情境。
