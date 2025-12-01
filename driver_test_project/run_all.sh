@@ -1,0 +1,26 @@
+#!/bin/bash
+# 自動化測試包裝器：編譯 → 執行 → 清理
+
+echo "===== 開始 Driver 測試流程 ====="
+
+# Step 1: 編譯
+echo "[INFO] 編譯專案..."
+make
+if [ $? -ne 0 ]; then
+    echo "[ERROR] 編譯失敗，停止流程"
+    exit 1
+fi
+
+# Step 2: 執行測試
+echo "[INFO] 執行測試工具..."
+./driver_test
+if [ $? -ne 0 ]; then
+    echo "[ERROR] 測試工具執行失敗"
+    exit 1
+fi
+
+# Step 3: 清理檔案
+echo "[INFO] 清理編譯檔案..."
+make clean
+
+echo "===== Driver 測試流程完成 ====="
