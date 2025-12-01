@@ -1,0 +1,2 @@
+insmod 模組成功
+rmmod 模組成功
