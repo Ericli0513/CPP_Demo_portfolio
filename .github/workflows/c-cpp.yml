@@ -71,7 +71,12 @@ jobs:
       working-directory: module_integration_project2
 
     - name: Run module_integration_project2
-      run: ./module_tool  #
+      run: ./module_tool load video
+           ./module_tool load audio
+            ./module_tool unload video
+            ./module_tool unload audio
+            ./module_tool load network
+            ./module_tool unload network  #
       working-directory: module_integration_project2
 
     - name: Upload module_integration_project2 artifact
