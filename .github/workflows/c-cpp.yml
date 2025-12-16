@@ -39,7 +39,7 @@ jobs:
       working-directory: driver_test_project
 
     - name: Run driver_test_project
-      run: ./driver-test   # 假設執行檔叫 driver-test
+      run: ./driver_test   # 假設執行檔叫 driver_test
       working-directory: driver_test_project
 
     - name: Upload driver_test_project artifact
@@ -55,7 +55,7 @@ jobs:
       working-directory: module_integration_project1
 
     - name: Run module_integration_project1
-      run: ./module1   # 假設執行檔叫 module1
+      run: ./module_test   # 
       working-directory: module_integration_project1
 
     - name: Upload module_integration_project1 artifact
@@ -71,7 +71,7 @@ jobs:
       working-directory: module_integration_project2
 
     - name: Run module_integration_project2
-      run: ./module2   # 假設執行檔叫 module2
+      run: ./module_tool  #
       working-directory: module_integration_project2
 
     - name: Upload module_integration_project2 artifact
@@ -87,7 +87,7 @@ jobs:
       working-directory: sys_monitor_project
 
     - name: Run sys_monitor_project
-      run: ./sys-monitor   # 假設執行檔叫 sys-monitor
+      run: ./sys_monitor   # 假設執行檔叫 sys_monitor
       working-directory: sys_monitor_project
 
     - name: Upload sys_monitor_project artifact
@@ -103,7 +103,7 @@ jobs:
       working-directory: tv_integration_project
 
     - name: Run tv_integration_project
-      run: ./tv-integration   # 假設執行檔叫 tv-integration
+      run: ./tv_test   # 假設執行檔叫 tv_test
       working-directory: tv_integration_project
 
     - name: Upload tv_integration_project artifact
