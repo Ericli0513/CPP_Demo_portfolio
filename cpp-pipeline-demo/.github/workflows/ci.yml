@@ -17,13 +17,12 @@ jobs:
     - name: Install build tools
       run: sudo apt update && sudo apt install build-essential -y
 
-    - name: Build cpp-pipeline-demo
-      run: |
-        cd ~/cpp-pipeline-demo
-        make
+   - name: Build cpp-pipeline-demo
+      run: make
+      working-directory: cpp-pipeline-demo
 
-    - name: Build driver_test_project
-      run: |
-        cd ~/driver_test_project
-        make
+   - name: Build driver_test_project
+      run: make
+      working-directory: driver_test_project
+
 
