@@ -22,8 +22,8 @@ jobs:
       run: make
       working-directory: cpp-pipeline-demo
 
-    - name: List files (cpp-pipeline-demo)
-      run: ls -R
+    - name: Run cpp-pipeline-demo
+      run: ./demo   # 假設執行檔叫 demo
       working-directory: cpp-pipeline-demo
 
     - name: Upload cpp-pipeline-demo artifact
@@ -31,18 +31,15 @@ jobs:
       with:
         name: cpp-pipeline-demo
         path: |
-          cpp-pipeline-demo/bin/*
-          cpp-pipeline-demo/build/*
-          cpp-pipeline-demo/*.out
-          cpp-pipeline-demo/*.exe
+          cpp-pipeline-demo/demo
 
     # === driver_test_project ===
     - name: Build driver_test_project
       run: make
       working-directory: driver_test_project
 
-    - name: List files (driver_test_project)
-      run: ls -R
+    - name: Run driver_test_project
+      run: ./driver-test   # 假設執行檔叫 driver-test
       working-directory: driver_test_project
 
     - name: Upload driver_test_project artifact
@@ -50,18 +47,15 @@ jobs:
       with:
         name: driver-test
         path: |
-          driver_test_project/bin/*
-          driver_test_project/build/*
-          driver_test_project/*.out
-          driver_test_project/*.exe
+          driver_test_project/driver-test
 
     # === module_integration_project1 ===
     - name: Build module_integration_project1
       run: make
       working-directory: module_integration_project1
 
-    - name: List files (module_integration_project1)
-      run: ls -R
+    - name: Run module_integration_project1
+      run: ./module1   # 假設執行檔叫 module1
       working-directory: module_integration_project1
 
     - name: Upload module_integration_project1 artifact
@@ -69,18 +63,15 @@ jobs:
       with:
         name: module1
         path: |
-          module_integration_project1/bin/*
-          module_integration_project1/build/*
-          module_integration_project1/*.out
-          module_integration_project1/*.exe
+          module_integration_project1/module1
 
     # === module_integration_project2 ===
     - name: Build module_integration_project2
       run: make
       working-directory: module_integration_project2
 
-    - name: List files (module_integration_project2)
-      run: ls -R
+    - name: Run module_integration_project2
+      run: ./module2   # 假設執行檔叫 module2
       working-directory: module_integration_project2
 
     - name: Upload module_integration_project2 artifact
@@ -88,18 +79,15 @@ jobs:
       with:
         name: module2
         path: |
-          module_integration_project2/bin/*
-          module_integration_project2/build/*
-          module_integration_project2/*.out
-          module_integration_project2/*.exe
+          module_integration_project2/module2
 
     # === sys_monitor_project ===
     - name: Build sys_monitor_project
       run: make
       working-directory: sys_monitor_project
 
-    - name: List files (sys_monitor_project)
-      run: ls -R
+    - name: Run sys_monitor_project
+      run: ./sys-monitor   # 假設執行檔叫 sys-monitor
       working-directory: sys_monitor_project
 
     - name: Upload sys_monitor_project artifact
@@ -107,18 +95,15 @@ jobs:
       with:
         name: sys-monitor
         path: |
-          sys_monitor_project/bin/*
-          sys_monitor_project/build/*
-          sys_monitor_project/*.out
-          sys_monitor_project/*.exe
+          sys_monitor_project/sys-monitor
 
     # === tv_integration_project ===
     - name: Build tv_integration_project
       run: make
       working-directory: tv_integration_project
 
-    - name: List files (tv_integration_project)
-      run: ls -R
+    - name: Run tv_integration_project
+      run: ./tv-integration   # 假設執行檔叫 tv-integration
       working-directory: tv_integration_project
 
     - name: Upload tv_integration_project artifact
@@ -126,7 +111,4 @@ jobs:
       with:
         name: tv-integration
         path: |
-          tv_integration_project/bin/*
-          tv_integration_project/build/*
-          tv_integration_project/*.out
-          tv_integration_project/*.exe
+          tv_integration_project/tv-integration
