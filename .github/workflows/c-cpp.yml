@@ -1,4 +1,4 @@
-name: C++ CI
+name: C++ Multi-Project CI
 
 on:
   push:
@@ -11,15 +11,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Install g++
-      run: sudo apt-get update && sudo apt-get install g++ -y
+    - name: Install build tools
+      run: sudo apt update && sudo apt install build-essential -y
 
-    - name: Build all .cpp files
-      run: |
-        mkdir -p build
-        for file in $(find . -name "*.cpp"); do
-          g++ "$file" -o "build/$(basename "$file" .cpp)" || exit 1
-        done
+    - name: Build cpp-pipeline-demo
+      run: make
+      working-directory: cpp-pipeline-demo
+
+    - name: Build driver_test_project
+      run: make
+      working-directory: driver_test_project
+
