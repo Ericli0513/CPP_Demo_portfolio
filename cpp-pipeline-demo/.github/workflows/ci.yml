@@ -19,11 +19,11 @@ jobs:
 
     - name: Build cpp-pipeline-demo
       run: |
-        cd cpp-pipeline-demo
+        cd ~/cpp-pipeline-demo
         make
 
     - name: Build driver_test_project
       run: |
-        cd driver_test_project
+        cd ~/driver_test_project
         make
 
