@@ -17,11 +17,92 @@ jobs:
     - name: Install build tools
       run: sudo apt update && sudo apt install build-essential -y
 
+    # === cpp-pipeline-demo ===
     - name: Build cpp-pipeline-demo
       run: make
       working-directory: cpp-pipeline-demo
 
+    - name: Test cpp-pipeline-demo
+      run: make test
+      working-directory: cpp-pipeline-demo
+
+    - name: Upload cpp-pipeline-demo artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: cpp-pipeline-demo
+        path: cpp-pipeline-demo/bin/*
+
+    # === driver_test_project ===
     - name: Build driver_test_project
       run: make
       working-directory: driver_test_project
 
+    - name: Test driver_test_project
+      run: make test
+      working-directory: driver_test_project
+
+    - name: Upload driver_test_project artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: driver-test
+        path: driver_test_project/bin/*
+
+    # === module_integration_project1 ===
+    - name: Build module_integration_project1
+      run: make
+      working-directory: module_integration_project1
+
+    - name: Test module_integration_project1
+      run: make test
+      working-directory: module_integration_project1
+
+    - name: Upload module_integration_project1 artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: module1
+        path: module_integration_project1/bin/*
+
+    # === module_integration_project2 ===
+    - name: Build module_integration_project2
+      run: make
+      working-directory: module_integration_project2
+
+    - name: Test module_integration_project2
+      run: make test
+      working-directory: module_integration_project2
+
+    - name: Upload module_integration_project2 artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: module2
+        path: module_integration_project2/bin/*
+
+    # === sys_monitor_project ===
+    - name: Build sys_monitor_project
+      run: make
+      working-directory: sys_monitor_project
+
+    - name: Test sys_monitor_project
+      run: make test
+      working-directory: sys_monitor_project
+
+    - name: Upload sys_monitor_project artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: sys-monitor
+        path: sys_monitor_project/bin/*
+
+    # === tv_integration_project ===
+    - name: Build tv_integration_project
+      run: make
+      working-directory: tv_integration_project
+
+    - name: Test tv_integration_project
+      run: make test
+      working-directory: tv_integration_project
+
+    - name: Upload tv_integration_project artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: tv-integration
+        path: tv_integration_project/bin/*
