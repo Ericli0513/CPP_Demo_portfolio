@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4   # 最新版 checkout
 
     - name: Install build tools
       run: sudo apt update && sudo apt install build-essential -y
@@ -27,7 +27,7 @@ jobs:
       working-directory: cpp-pipeline-demo
 
     - name: Upload cpp-pipeline-demo artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: cpp-pipeline-demo
         path: cpp-pipeline-demo/bin/*
@@ -42,7 +42,7 @@ jobs:
       working-directory: driver_test_project
 
     - name: Upload driver_test_project artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: driver-test
         path: driver_test_project/bin/*
@@ -57,7 +57,7 @@ jobs:
       working-directory: module_integration_project1
 
     - name: Upload module_integration_project1 artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: module1
         path: module_integration_project1/bin/*
@@ -72,7 +72,7 @@ jobs:
       working-directory: module_integration_project2
 
     - name: Upload module_integration_project2 artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: module2
         path: module_integration_project2/bin/*
@@ -87,7 +87,7 @@ jobs:
       working-directory: sys_monitor_project
 
     - name: Upload sys_monitor_project artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: sys-monitor
         path: sys_monitor_project/bin/*
@@ -102,7 +102,7 @@ jobs:
       working-directory: tv_integration_project
 
     - name: Upload tv_integration_project artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: tv-integration
         path: tv_integration_project/bin/*
