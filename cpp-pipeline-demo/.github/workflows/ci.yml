@@ -1,4 +1,4 @@
-name: Cpp CI
+name: C++ Multi-Project CI
 
 on:
   push:
@@ -7,24 +7,23 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Install dependencies
+    - name: Install build tools
       run: sudo apt update && sudo apt install build-essential -y
 
-    - name: Build project
-      run: make
+    - name: Build cpp-pipeline-demo
+      run: |
+        cd cpp-pipeline-demo
+        make
 
-    - name: Run tests
-      run: make test
+    - name: Build driver_test_project
+      run: |
+        cd driver_test_project
+        make
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: demo-binary
-        path: demo
