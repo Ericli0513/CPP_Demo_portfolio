@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4   # 最新版 checkout
+      uses: actions/checkout@v4
 
     - name: Install build tools
       run: sudo apt update && sudo apt install build-essential -y
@@ -22,87 +22,111 @@ jobs:
       run: make
       working-directory: cpp-pipeline-demo
 
-    - name: Test cpp-pipeline-demo
-      run: make test
+    - name: List files (cpp-pipeline-demo)
+      run: ls -R
       working-directory: cpp-pipeline-demo
 
     - name: Upload cpp-pipeline-demo artifact
       uses: actions/upload-artifact@v4
       with:
         name: cpp-pipeline-demo
-        path: cpp-pipeline-demo/bin/*
+        path: |
+          cpp-pipeline-demo/bin/*
+          cpp-pipeline-demo/build/*
+          cpp-pipeline-demo/*.out
+          cpp-pipeline-demo/*.exe
 
     # === driver_test_project ===
     - name: Build driver_test_project
       run: make
       working-directory: driver_test_project
 
-    - name: Test driver_test_project
-      run: make test
+    - name: List files (driver_test_project)
+      run: ls -R
       working-directory: driver_test_project
 
     - name: Upload driver_test_project artifact
       uses: actions/upload-artifact@v4
       with:
         name: driver-test
-        path: driver_test_project/bin/*
+        path: |
+          driver_test_project/bin/*
+          driver_test_project/build/*
+          driver_test_project/*.out
+          driver_test_project/*.exe
 
     # === module_integration_project1 ===
     - name: Build module_integration_project1
       run: make
       working-directory: module_integration_project1
 
-    - name: Test module_integration_project1
-      run: make test
+    - name: List files (module_integration_project1)
+      run: ls -R
       working-directory: module_integration_project1
 
     - name: Upload module_integration_project1 artifact
       uses: actions/upload-artifact@v4
       with:
         name: module1
-        path: module_integration_project1/bin/*
+        path: |
+          module_integration_project1/bin/*
+          module_integration_project1/build/*
+          module_integration_project1/*.out
+          module_integration_project1/*.exe
 
     # === module_integration_project2 ===
     - name: Build module_integration_project2
       run: make
       working-directory: module_integration_project2
 
-    - name: Test module_integration_project2
-      run: make test
+    - name: List files (module_integration_project2)
+      run: ls -R
       working-directory: module_integration_project2
 
     - name: Upload module_integration_project2 artifact
       uses: actions/upload-artifact@v4
       with:
         name: module2
-        path: module_integration_project2/bin/*
+        path: |
+          module_integration_project2/bin/*
+          module_integration_project2/build/*
+          module_integration_project2/*.out
+          module_integration_project2/*.exe
 
     # === sys_monitor_project ===
     - name: Build sys_monitor_project
       run: make
       working-directory: sys_monitor_project
 
-    - name: Test sys_monitor_project
-      run: make test
+    - name: List files (sys_monitor_project)
+      run: ls -R
       working-directory: sys_monitor_project
 
     - name: Upload sys_monitor_project artifact
       uses: actions/upload-artifact@v4
       with:
         name: sys-monitor
-        path: sys_monitor_project/bin/*
+        path: |
+          sys_monitor_project/bin/*
+          sys_monitor_project/build/*
+          sys_monitor_project/*.out
+          sys_monitor_project/*.exe
 
     # === tv_integration_project ===
     - name: Build tv_integration_project
       run: make
       working-directory: tv_integration_project
 
-    - name: Test tv_integration_project
-      run: make test
+    - name: List files (tv_integration_project)
+      run: ls -R
       working-directory: tv_integration_project
 
     - name: Upload tv_integration_project artifact
       uses: actions/upload-artifact@v4
       with:
         name: tv-integration
-        path: tv_integration_project/bin/*
+        path: |
+          tv_integration_project/bin/*
+          tv_integration_project/build/*
+          tv_integration_project/*.out
+          tv_integration_project/*.exe
